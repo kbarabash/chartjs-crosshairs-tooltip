@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>lineCrosshairsTooltip</title>
+    <script src="./Chart.bundle.js"></script>
+    <script src="./line-crosshairs-tooltip.js"></script>
+</head>
+
+<body>
+    <div style="width: 600px; height: 600px;">
+        <canvas id="myChart" />
+    </div>
+
+    <script>
+        new Chart(document.getElementById("myChart"), {
+            type: 'lineCrosshairsTooltip',
+            data: {
+                datasets: [{
+                    label: 'line 1',
+                    borderColor: 'rgba(147, 193, 239, 1)',
+                    tooltip: true,
+                    data: [10, 5, 25, 15]
+                }, {
+                    label: 'line 2',
+                    borderColor: 'rgba(239, 147, 147, 0.1)',
+                    tooltip: true,
+                    data: [12, 32, 1, 41],
+                }],
+                labels: ['January', 'February', 'March', 'April']
+            },
+            options: {
+                elements: {
+                    line: {
+                        backgroundColor: 'rgba(0, 0, 0, 0)'
+                    },
+                    point: {
+                        radius: 0,
+                        hoverRadius: 4
+                    }
+                },
+                tooltips: {
+                    filter: (tooltipItem, data) => data.datasets[tooltipItem.datasetIndex].tooltip,
+                    verticalLine: {
+                        display: true,
+                        color: 'red'
+                    },
+                    mode: 'index',
+                    intersect: false
+                },
+                legend: {
+                    display: false
+                },
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            display: false
+                        }
+                    }],
+                    yAxes: [{
+                        gridLines: {
+                            display: false
+                        }
+                    }]
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
